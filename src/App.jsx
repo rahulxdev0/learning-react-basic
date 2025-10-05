@@ -1,21 +1,18 @@
-import React, { useRef } from "react";
-import MyInput from "./MyInput";
+import React, { useEffect, useState } from 'react'
 
-function App() {
-  const inputRef = useRef();
-  console.log(inputRef);
+const App = () => {
+  const [ width, setWidth ] = useState(window.innerWidth);
+  console.log(width);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <div>
-      <h2>useImperativeHandle Example</h2>
-      <MyInput ref={inputRef} />
-      <br />
-      <div style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
-        <button onClick={() => inputRef.current.focus()}>Focus Input</button>
-        <button onClick={() => inputRef.current.clear()}>Clear Input</button>
-      </div>
-    </div>
-  );
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
