@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import TableExample from './components/TableExample';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './Home'
+import ViewPost from './Posts/ViewPost'
 
 const App = () => {
-  const [ width, setWidth ] = useState(window.innerWidth);
-  console.log(width);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
-    <div><TableExample /></div>
+    <>
+     <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='post/:id' element={<ViewPost />} />
+      </Routes>
+     </BrowserRouter>
+    </>
   )
 }
 
