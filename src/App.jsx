@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import TableExample from './components/TableExample';
 
 const App = () => {
   const [ width, setWidth ] = useState(window.innerWidth);
@@ -11,7 +12,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>App</div>
+    <div><TableExample /></div>
   )
 }
 
